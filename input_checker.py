@@ -6,6 +6,7 @@ with open("inputs", "r") as f:
 with open("outputs", "r") as f:
     outputs = f.read()
 
+acc = 0
 for idx, (inp, out) in enumerate(zip(inputs.split("!@#"), outputs.split("!@#"))):
     inp_strip = inp.strip()
     out_strip = out.strip()
@@ -13,14 +14,23 @@ for idx, (inp, out) in enumerate(zip(inputs.split("!@#"), outputs.split("!@#")))
     res = subprocess.run("./a.out", input=inp, stdout=subprocess.PIPE, text=True)
     res_strip = res.stdout.strip()
 
-    print(f"#{idx}: ", end='')
+    print(f"===== 테스트 {idx} =====")
+    print("입력")
+    print(inp_strip)
+    print("기댓값")
+    print(out_strip)
+    print("출력")
+    print(res_strip)
+
+    print("결과: ", end='')
     if res_strip == out_strip:
+        acc += 1
         print("맞았습니다!!")
     else:
         print("틀렸습니다!!")
-        print("입력")
-        print(inp_strip)
-        print("출력")
-        print(res_strip)
-        print("답")
-        print(out_strip)
+
+input_num = idx + 1
+
+print("===== 최종 결과 =====")
+print(f"정답: {acc}, 오답: {input_num - acc}")
+print(f"정답률: {acc / input_num * 100:.2f}%")
