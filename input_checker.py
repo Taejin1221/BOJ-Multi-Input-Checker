@@ -1,4 +1,10 @@
+import json
+import os
 import subprocess
+
+with open("settings.json", "r") as f:
+    settings = json.load(f)
+os.chdir(settings["directory"])
 
 with open("inputs", "r") as f:
     inputs = f.read()
