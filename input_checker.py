@@ -21,18 +21,17 @@ for idx, (inp, out) in enumerate(zip(inputs, outputs)):
 
     print(f"===== 테스트 {idx} =====")
     print("입력")
-    print(inp)
+    print(inp, end='\n\n')
     print("기댓값")
-    print(out)
+    print(out, end='\n\n')
     print("출력")
-    print(res)
+    print(res, end='\n\n')
 
-    print("결과: ", end='')
     if res == out:
         accept += 1
         print("맞았습니다!!")
     else:
-        print("틀렸습니다!!")
+        print("***** 틀렸습니다!! *****")
 
 print("===== 최종 결과 =====")
 input_size = len(inputs)
