@@ -51,13 +51,11 @@ for idx, (inp, out) in enumerate(zip(inputs, outputs)):
                 print(f"{out_one} vs {res_one}")
 
             if len(out_split) > len(res_split):
-                print("*오답*:", end=" ")
                 for out_one in out_split[len(res_split):]:
-                    print(f"{out_one} vs ''")
+                    print(f"*오답*: {out_one} vs ''")
             elif len(out_split) < len(res_split):
-                print("*오답*:", end=" ")
                 for res_one in res_split[len(out_split):]:
-                    print(f"'' vs {res_one}")
+                    print(f"*오답*: '' vs {res_one}")
     print("")
 
 print("===== 최종 결과 =====")
